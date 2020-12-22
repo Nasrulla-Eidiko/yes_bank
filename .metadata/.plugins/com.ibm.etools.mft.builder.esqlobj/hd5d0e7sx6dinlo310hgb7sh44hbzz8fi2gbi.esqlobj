@@ -1,0 +1,2 @@
+CREATE FUNCTION getEGProperty(IN EGName CHAR, IN PropertyKey CHAR)  RETURNS CHAR 
+ LANGUAGE JAVA   EXTERNAL NAME "com.yesbank.esb.UserConfigurableService.getEGProperty";

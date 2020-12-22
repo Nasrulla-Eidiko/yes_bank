@@ -1,0 +1,41 @@
+CREATE PROCEDURE validateRequestHeader(IN reqRef REFERENCE,IN serviceName CHAR, IN channelIdList CHAR)
+BEGIN
+	
+	IF(FIELDNAME(reqRef) ='JSON')THEN
+	MOVE reqRef FirstChild;
+    END IF;
+    MOVE reqRef  TO reqRef.*[<];
+	IF (reqRef.*:ReqHdr.*:ConsumerContext.*:RequesterID IS NULL OR reqRef.*:ReqHdr.*:ConsumerContext.*:RequesterID = '') THEN
+		THROW USER EXCEPTION MESSAGE
+		2951 VALUES('mandatory_input_missing','RequesterID is missing in Header');
+	END IF;
+	/*IF (CONTAINS(channelIdList,FIELDVALUE(reqRef.*:ReqHdr.*:ConsumerContext.*:RequesterID) )=FALSE)THEN
+		THROW USER EXCEPTION MESSAGE
+		2951 VALUES('Incorrect Input ','RequesterID is missing required value in Header');
+	END IF;*/
+	IF (reqRef.*:ReqHdr.*:ServiceContext.*:ServiceName IS NULL OR reqRef.*:ReqHdr.*:ServiceContext.*:ServiceName ='') THEN
+		THROW USER EXCEPTION MESSAGE
+		2951 VALUES('mandatory_input_missing','ServiceName is missing in Header');
+	ELSEIF (FIELDVALUE(reqRef.*:ReqHdr.*:ServiceContext.*:ServiceName) <>serviceName ) THEN
+		THROW USER EXCEPTION MESSAGE
+		2951 VALUES('Incorrect Input','ServiceName is missing required value in Header');
+	END IF;
+	IF (reqRef.*:ReqHdr.*:ServiceContext.*:ReqRefNum IS NULL OR reqRef.*:ReqHdr.*:ServiceContext.*:ReqRefNum = '') THEN
+		THROW USER EXCEPTION MESSAGE
+		2951 VALUES('mandatory_input_missing','ReqRefNum is missing in Header');
+	END IF;
+	IF (reqRef.*:ReqHdr.*:ServiceContext.*:ServiceVersionNo IS NULL OR reqRef.*:ReqHdr.*:ServiceContext.*:ServiceVersionNo = '') THEN
+		THROW USER EXCEPTION MESSAGE
+		2951 VALUES('mandatory_input_missing','ServiceVersionNo is missing in Header');
+	END IF;
+	
+	DECLARE flag BOOLEAN FALSE;
+	DECLARE PolicyName CHARACTER '{'||serviceName||'Policies}:'||serviceName;
+	DECLARE channelIdList CHAR getPolicyProperty(PolicyName,'channelIdList');
+	CALL tokenSearch(reqRef.*:ReqHdr.*:ConsumerContext.*:RequesterID,channelIdList,'||') INTO flag;
+	IF (flag=FALSE)THEN
+		THROW USER EXCEPTION MESSAGE
+		2951 VALUES('Incorrect Input ','RequesterID is missing required value in Header');
+	END IF;
+	
+END;

@@ -1,0 +1,2 @@
+CREATE FUNCTION getPolicyProperty( IN PolicyName CHARACTER ,IN Property CHARACTER)  RETURNS CHAR 
+ LANGUAGE JAVA   EXTERNAL NAME "com.yesbank.esb.UserConfigurableService.getPolicyProperty";

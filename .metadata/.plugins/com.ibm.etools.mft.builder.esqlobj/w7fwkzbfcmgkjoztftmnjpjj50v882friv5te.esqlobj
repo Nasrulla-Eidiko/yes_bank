@@ -1,0 +1,34 @@
+CREATE FUNCTION CheckArrayElementXpath(IN rootNode REFERENCE, IN env REFERENCE)
+RETURNS BOOLEAN
+BEGIN
+	
+	DECLARE check BOOLEAN false;
+	DECLARE tempRootNode REFERENCE TO rootNode;
+	MOVE env TO env.Split;
+	MOVE env LASTCHILD;
+	
+	
+    IF (FIELDVALUE(env) = FIELDNAME(rootNode) )  THEN
+    	
+    	MOVE env PREVIOUSSIBLING;
+    	
+		SET  check =true;
+	Loop1:	WHILE (LASTMOVE(env))DO
+		
+		MOVE tempRootNode PARENT ;
+		
+		IF(NOT(FIELDNAME(tempRootNode)= FIELDVALUE(env)))THEN
+		set check =false;
+		LEAVE Loop1;
+		
+		END IF;
+		MOVE env PREVIOUSSIBLING;
+		
+		END WHILE;
+			
+		
+		END IF;
+		
+		RETURN check;
+    
+END;

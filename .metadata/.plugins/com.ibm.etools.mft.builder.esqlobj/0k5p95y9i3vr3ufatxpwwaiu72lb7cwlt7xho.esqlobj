@@ -1,0 +1,32 @@
+CREATE FUNCTION tokenSearch(IN requestId CHARACTER,IN channelIdList CHARACTER, IN Delim CHARACTER ) RETURNS BOOLEAN
+BEGIN
+	DECLARE P INTEGER; 
+    DECLARE Idx INTEGER 1; 
+	DECLARE flag BOOLEAN;
+    DECLARE splitValue CHARACTER NULL; 
+    
+   REPEAT 
+      SET P = POSITION(Delim IN channelIdList); 
+      IF P = 0 THEN 
+         IF(requestId = channelIdList) THEN
+         	SET flag = TRUE;
+         	RETURN flag;
+      	ELSE
+      		SET flag = FALSE;
+         	RETURN flag;
+      	END IF;
+      ELSE 
+         SET splitValue = LEFT(channelIdList, P - 1); 
+         SET channelIdList = SUBSTRING(channelIdList FROM P + LENGTH(Delim)); 
+         IF(requestId = splitValue) THEN
+         	SET flag = TRUE;
+         	RETURN flag;
+   		ELSE
+      		SET Idx = Idx + 1; 
+      	END IF;
+         
+      END IF; 
+   UNTIL P = 0 
+       
+   END REPEAT;    
+END;

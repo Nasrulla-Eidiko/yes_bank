@@ -1,0 +1,51 @@
+CREATE PROCEDURE setEnvForLogging (IN envRef REFERENCE, IN inputRootRef REFERENCE,IN localEnvRef REFERENCE)
+BEGIN
+     
+      
+      DECLARE uri CHARACTER;
+     DECLARE payload REFERENCE TO inputRootRef.*[<];             
+     
+      DECLARE  mqrfh2Ref REFERENCE TO  inputRootRef.MQRFH2.usr.Environment.Variables;
+     
+      IF(LASTMOVE(mqrfh2Ref))THEN
+     
+      SET envRef.Variables =mqrfh2Ref;
+    
+    ELSE    
+     IF(FIELDNAME(payload) ='JSON' OR inputRootRef.HTTPInputHeader."Content-Type"= 'application/json')THEN
+     MOVE payload  FIRSTCHILD;
+     SET  envRef.Variables.JSONMessage= true;
+     
+      ----- getting operation name from URI ----
+    
+    DECLARE pos INTEGER;
+    DECLARE len INTEGER;
+    SET uri = localEnvRef.HTTP.Input.RequestLine.RequestURI;
+    WHILE (CONTAINS(uri,'/')) DO
+          SET len = LENGTH(uri);
+          SET pos = POSITION('/' IN uri);
+          SET uri = RIGHT(uri,(len-pos));
+    END WHILE;
+
+    --SET Environment.Variable.OperationName = uri;
+    ----- getting operation name from URI ----
+    
+    END IF;
+    MOVE payload  TO payload.*[<];
+    
+  
+     
+  --  MOVE payload  TO payload.*:{COALESCE(envRef.Variables.Operation.Name,'')||'Req'};
+   --SET  envRef.Variables.Operation.Name       = COALESCE(SUBSTRING(SUBSTRING(localEnvRef.HTTP.Input.RequestLine.RequestURI FROM POSITION('/' IN localEnvRef.HTTP.Input.RequestLine.RequestURI REPEAT 2)) AFTER '/'),localEnvRef.Destination.RouterList.DestinationData.labelName);
+   SET  envRef.Variables.Operation.Name         = COALESCE(uri,localEnvRef.Destination.RouterList.DestinationData.labelName);
+      
+    SET  envRef.Variables.ChannelId                   = COALESCE(payload.*:ReqHdr.*:ConsumerContext.*:RequesterID,'');
+      SET  envRef.Variables.ServiceName               = COALESCE(payload.*:ReqHdr.*:ServiceContext.*:ServiceName,'');
+      SET  envRef.Variables.TxnRefNo                      = COALESCE(payload.*:ReqHdr.*:ServiceContext.*:ReqRefNum,'');
+      SET  envRef.Variables.TxnDateTime               = COALESCE(payload.*:ReqHdr.*:ServiceContext.*:ReqRefTimeStamp,'');
+      SET  envRef.Variables.ServiceVersionNo        = COALESCE(payload.*:ReqHdr.*:ServiceContext.*:ServiceVersionNo,'');
+      SET  envRef.Variables.RequestIdentifier    = COALESCE(localEnvRef.Destination.HTTP.RequestIdentifier,localEnvRef.Destination.SOAP.Reply.ReplyIdentifier);                  
+      
+   END IF;
+
+ END;

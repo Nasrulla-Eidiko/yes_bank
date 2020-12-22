@@ -1,0 +1,26 @@
+CREATE FUNCTION JSONTOXMLPROCCreateChildASCopy(In rootNodeJSON REFERENCE, In rootNodeXMLNSC REFERENCE, IN Environment REFERENCE, IN name CHAR,In namespace CHAR )
+BEGIN
+	 
+	 IF(name IS NULL)THEN
+	 SET name=FIELDNAME(rootNodeJSON);
+	 END IF;
+	    IF(name IN ('ConsumerContext','RequesterID','ServiceContext','ServiceName','OperationName','ReqRefNum','ReqRefTimeStamp','ServiceVersionNo'))THEN
+	 SET namespace = '';
+	 END IF;
+--	 IF(FIELDVALUE(rootNodeJSON)='')THEN
+--		THROW USER EXCEPTION MESSAGE
+--		2951 VALUES('Blank value :',FIELDNAME(rootNodeJSON)||' is empty');
+--	 END IF;
+	
+	 IF(FIELDTYPE( rootNodeJSON)=Name OR FIELDTYPE( rootNodeJSON)=NameValue)THEN
+	 CREATE LASTCHILD OF rootNodeXMLNSC 
+	 AS rootNodeXMLNSC 
+	 TYPE FIELDTYPE( rootNodeJSON)
+	 NAMESPACE namespace 
+	 NAME name
+	 VALUE FIELDVALUE(rootNodeJSON);
+     END IF;
+    
+     CALL JSONTOXMLPROC(rootNodeJSON,rootNodeXMLNSC,namespace,Environment);
+
+	END;

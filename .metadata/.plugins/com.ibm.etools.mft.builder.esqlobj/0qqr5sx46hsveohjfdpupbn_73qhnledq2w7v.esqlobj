@@ -1,0 +1,8 @@
+CREATE PROCEDURE AuditMessage(IN Message REFERENCE,IN LOGPoint CHAR,IN envRef REFERENCE,IN LOGLEVEL INT) BEGIN
+		
+		 SET  envRef.Variables.LogMessage  			= ASBITSTREAM(Message OPTIONS FolderBitStream CCSID 1208);
+		 SET  envRef.Variables.MessageFlowName 		= SQL.MessageFlowLabel;
+		 SET  envRef.Variables.LogPoint 			= LOGPoint;		   
+		 SET  envRef.LOGMESSAGE.LOG_LEVEL           = LOGLEVEL;
+	    PROPAGATE TO TERMINAL 'out2' DELETE NONE;
+	END;

@@ -1,0 +1,2 @@
+CREATE FUNCTION getCustomerId( IN custId CHAR)  RETURNS CHAR 
+ LANGUAGE JAVA   EXTERNAL NAME "com.yesbank.esb.EncryptCustomerId.hashedCode";

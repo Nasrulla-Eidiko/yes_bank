@@ -1,0 +1,14 @@
+CREATE PROCEDURE storePayloadForLogging(IN reqRef REFERENCE,IN envRef REFERENCE,IN nodelist CHAR)
+BEGIN
+	
+	
+--    IF(FIELDNAME(reqRef) ='JSON' OR )THEN
+--	CREATE FIRSTCHILD OF envRef.Variables.Payload DOMAIN(FIELDNAME(reqRef)) ; 
+--	SET envRef.Variables.Payload.JSON.Data= reqRef.Data;
+--	ELSEIF(FIELDNAME(reqRef) ='XMLNSC')THEN
+--	CREATE FIRSTCHILD OF envRef.Variables.Payload DOMAIN(FIELDNAME(reqRef)) ; 
+--	SET envRef.Variables.Payload.XMLNSC= reqRef;
+--	END IF;
+--  CALL MaskDataInOutputRoot(envRef.Variables.Payload,nodelist );
+--	
+END;

@@ -1,0 +1,36 @@
+CREATE PROCEDURE createJSONARRAYFROMXPATH ( INOUT rootNode REFERENCE ,IN CHECK BOOLEAN , IN  arraySize INTEGER )
+	BEGIN
+			
+			
+		--	WHILE LASTMOVE(rootNode )and CHECK DO
+		
+		DECLARE tempcountRef REFERENCE TO rootNode;
+		
+	    DECLARE arrayElementName CHAR FIELDNAME(rootNode);
+		WHILE LASTMOVE(tempcountRef) DO
+			
+		
+		
+		IF(FIELDNAME(tempcountRef) = FIELDNAME(rootNode))THEN
+		SET arraySize =arraySize+ 1;
+		END IF;
+		MOVE tempcountRef NEXTSIBLING;
+		END WHILE;
+		
+        CALL createJSONArray(rootNode, arraySize);
+	    SET arraySize=0;
+--	    MOVE rootNode PARENT;
+--	   
+--	   WHILE(FIELDNAME(rootNode)=arrayElementName) DO
+--	    MOVE rootNode PARENT;
+--		END WHILE;
+--	    MOVE rootNode NEXTSIBLING;
+--	    
+--	 IF(LASTMOVE (rootNode))THEN
+--	   MOVE rootNode TO rootNode.*:{arrayElementName};
+--	  
+--	 END IF;
+	    
+	    
+	  --  END WHILE;
+	END;

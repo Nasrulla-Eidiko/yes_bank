@@ -1,0 +1,2 @@
+CREATE FUNCTION getCheckSum( IN checkSum CHAR)  RETURNS CHAR 
+ LANGUAGE JAVA   EXTERNAL NAME "com.yesbank.esb.UtilityJava.checkSumValue";

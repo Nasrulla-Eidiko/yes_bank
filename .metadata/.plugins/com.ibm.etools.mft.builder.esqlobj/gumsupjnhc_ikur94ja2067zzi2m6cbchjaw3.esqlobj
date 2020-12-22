@@ -1,0 +1,24 @@
+CREATE FUNCTION JSONTOXMLPROC(In rootNodeJSON REFERENCE, In rootNodeXMLNSC REFERENCE,In namespace NAMESPACE,IN Environment REFERENCE)
+BEGIN
+	
+    DECLARE arrayNodeJSON REFERENCE TO rootNodeJSON;
+	MOVE rootNodeJSON FirstChild;
+	
+	WHILE LASTMOVE(rootNodeJSON) DO
+	IF FIELDTYPE(rootNodeJSON) = JSON.Array THEN
+		SET Environment.name=FIELDNAME(rootNodeJSON);
+	    MOVE arrayNodeJSON  TO rootNodeJSON;
+	    MOVE arrayNodeJSON  FirstChild;
+	
+	    WHILE LASTMOVE( arrayNodeJSON ) DO
+	    CALL JSONTOXMLPROCCreateChildASCopy(arrayNodeJSON,rootNodeXMLNSC,Environment,Environment.name,namespace);
+	    MOVE arrayNodeJSON  NEXTSIBLING; 
+	    END WHILE;
+	ELSE 
+		CALL JSONTOXMLPROCCreateChildASCopy(rootNodeJSON,rootNodeXMLNSC,Environment,null,namespace);
+	
+	END IF;
+	
+	MOVE rootNodeJSON  NEXTSIBLING; 
+	END WHILE;
+	END ;

@@ -1,0 +1,45 @@
+CREATE FUNCTION ChangeNamespaceInOutputRoot(In rootNode REFERENCE, In oldNamespace CHARACTER, In newNamespace CHARACTER)
+BEGIN
+	
+	DECLARE CHECKSIBLING BOOLEAN FALSE;
+	--
+	-- DEPTH determines when to finish.  
+	-- Every time we MOVE FIRSTCHILD we add 1 to DEPTH
+	-- Every time we MOVE PARENT we subtract 1 from DEPTH
+	-- MOVE NEXTSIBLING does not change DEPTH
+	-- Initial value is 1, so we are finished when DEPTH = 0
+	--
+	DECLARE DEPTH INTEGER 1;
+	--
+	-- Walk the tree top to bottom, left to right
+	--
+	WHILE DEPTH <> 0 DO 
+		IF CHECKSIBLING = FALSE THEN 
+			MOVE rootNode FirstChild;
+		 	IF LASTMOVE(rootNode) = TRUE THEN
+				SET DEPTH = DEPTH + 1;
+				CALL ChangeNamespace(rootNode, oldNamespace, newNamespace);
+		 	ELSE
+		 		MOVE rootNode NEXTSIBLING;
+			 	IF LASTMOVE(rootNode) = TRUE THEN
+					CALL ChangeNamespace(rootNode, oldNamespace, newNamespace);
+					SET CHECKSIBLING = FALSE;
+			 	ELSE
+					SET DEPTH = DEPTH - 1;
+					Move rootNode PARENT;		 		
+					SET CHECKSIBLING = TRUE;
+				END IF;
+		 	END IF;	
+		ELSE
+			MOVE rootNode NEXTSIBLING;
+		 	IF LASTMOVE(rootNode) = TRUE THEN
+				CALL ChangeNamespace(rootNode, oldNamespace, newNamespace);
+				SET CHECKSIBLING = FALSE;
+		 	ELSE
+				SET DEPTH = DEPTH - 1;
+				Move rootNode PARENT;		 		
+				SET CHECKSIBLING = TRUE;
+			END IF;
+		END IF;
+	END WHILE;
+END;

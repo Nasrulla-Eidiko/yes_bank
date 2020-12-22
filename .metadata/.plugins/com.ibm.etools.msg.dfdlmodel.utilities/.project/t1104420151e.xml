@@ -1,0 +1,122 @@
+<?xml version="1.0" encoding="UTF-8"?><MessageBroker name="UPIService">
+  <XSDCollection href="platform:/resource/UPIService/UPIService_wsdl.xsd" prefix="tns" targetNamespace="http://xmlns.yesbank.com/WS/UPIService">
+    <include name="/UPIService/UPIService_InlineSchema2.xsd" targetNamespace="http://xmlns.yesbank.com/WS/UPIService"/>
+    <include name="/UPIService/UPIService/UPIService.xsd" targetNamespace="http://xmlns.yesbank.com/WS/UPIService"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/UPIService/UPIService/UPIService.xsd" prefix="txp" targetNamespace="http://xmlns.yesbank.com/WS/UPIService">
+    <import name="CommonSchema/commontypes.xsd" targetNamespace="http://xmlns.yesbank.com/WS/CommonTypes"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetAccountListRes;XSDElementDeclaration" name="GetAccountListRes" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}GetAccountListServiceResType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetAccountListReq;XSDElementDeclaration=1" name="GetAccountListReq" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}GetAccountListServiceReqType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetExpiryDateReq;XSDElementDeclaration=2" name="GetExpiryDateReq" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}GetExpiryDateServiceReqType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetExpiryDateRes;XSDElementDeclaration=3" name="GetExpiryDateRes" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}GetExpiryDateServiceResType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetCustomerIdListReq;XSDElementDeclaration=4" name="GetCustomerIdListReq" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}GetCustomerIdListServiceReqType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetCustomerIdListRes;XSDElementDeclaration=5" name="GetCustomerIdListRes" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}GetCustomerIdListServiceResType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//SetORValidateMPINReq;XSDElementDeclaration=6" name="SetORValidateMPINReq" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}SetORValidateMPINServiceReqType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//SetORValidateMPINRes;XSDElementDeclaration=7" name="SetORValidateMPINRes" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}SetORValidateMPINServiceResType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetHashKeyReq;XSDElementDeclaration=8" name="GetHashKeyReq" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}GetHashKeyServiceReqType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetHashKeyRes;XSDElementDeclaration=9" name="GetHashKeyRes" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}GetHashKeyServiceResType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetLatestAadhaarLinkedAccReq;XSDElementDeclaration=10" name="GetLatestAadhaarLinkedAccReq" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}GetLatestAadhaarLinkedAccReqType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetLatestAadhaarLinkedAccRes;XSDElementDeclaration=11" name="GetLatestAadhaarLinkedAccRes" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}GetLatestAadhaarLinkedAccResType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetFundsTransferStatusReq;XSDElementDeclaration=12" name="GetFundsTransferStatusReq" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}GetFundsTransferStatusReqType"/>
+    <element href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetFundsTransferStatusRes;XSDElementDeclaration=13" name="GetFundsTransferStatusRes" type="mlib://UPIService#/-/complexType{http://xmlns.yesbank.com/WS/UPIService}GetFundsTransferStatusResType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetCustomerIdListReqBodyType;XSDComplexTypeDefinition" name="GetCustomerIdListReqBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetCustomerIdListResBodyType;XSDComplexTypeDefinition=1" name="GetCustomerIdListResBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetCustomerIdListServiceReqType;XSDComplexTypeDefinition=2" name="GetCustomerIdListServiceReqType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetCustomerIdListServiceResType;XSDComplexTypeDefinition=3" name="GetCustomerIdListServiceResType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetAccountListReqBodyType;XSDComplexTypeDefinition=4" name="GetAccountListReqBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetAccountListResBodyType;XSDComplexTypeDefinition=5" name="GetAccountListResBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//AcoountDetailsType;XSDComplexTypeDefinition=6" name="AcoountDetailsType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//AccountNumberDtlsType;XSDComplexTypeDefinition=7" name="AccountNumberDtlsType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//SetORValidateMPINReqBodyType;XSDComplexTypeDefinition=8" name="SetORValidateMPINReqBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetExpiryDateReqBodyType;XSDComplexTypeDefinition=9" name="GetExpiryDateReqBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetExpiryDateResBodyType;XSDComplexTypeDefinition=10" name="GetExpiryDateResBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetExpiryDateServiceReqType;XSDComplexTypeDefinition=11" name="GetExpiryDateServiceReqType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetExpiryDateServiceResType;XSDComplexTypeDefinition=12" name="GetExpiryDateServiceResType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetAccountListServiceReqType;XSDComplexTypeDefinition=13" name="GetAccountListServiceReqType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetAccountListServiceResType;XSDComplexTypeDefinition=14" name="GetAccountListServiceResType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//SetORValidateMPINServiceReqType;XSDComplexTypeDefinition=15" name="SetORValidateMPINServiceReqType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//SetORValidateMPINServiceResType;XSDComplexTypeDefinition=16" name="SetORValidateMPINServiceResType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetHashKeyReqBodyType;XSDComplexTypeDefinition=17" name="GetHashKeyReqBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetHashKeyResBodyType;XSDComplexTypeDefinition=18" name="GetHashKeyResBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetHashKeyServiceReqType;XSDComplexTypeDefinition=19" name="GetHashKeyServiceReqType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetHashKeyServiceResType;XSDComplexTypeDefinition=20" name="GetHashKeyServiceResType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetLatestAadhaarLinkedAccReqBodyType;XSDComplexTypeDefinition=21" name="GetLatestAadhaarLinkedAccReqBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetLatestAadhaarLinkedAccResBodyType;XSDComplexTypeDefinition=22" name="GetLatestAadhaarLinkedAccResBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetLatestAadhaarLinkedAccReqType;XSDComplexTypeDefinition=23" name="GetLatestAadhaarLinkedAccReqType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetLatestAadhaarLinkedAccResType;XSDComplexTypeDefinition=24" name="GetLatestAadhaarLinkedAccResType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetFundsTransferStatusResBodyType;XSDComplexTypeDefinition=25" name="GetFundsTransferStatusResBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetFundsTransferStatusReqBodyType;XSDComplexTypeDefinition=26" name="GetFundsTransferStatusReqBodyType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetFundsTransferStatusReqType;XSDComplexTypeDefinition=27" name="GetFundsTransferStatusReqType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/UPIService/UPIService.xsd#//GetFundsTransferStatusResType;XSDComplexTypeDefinition=28" name="GetFundsTransferStatusResType"/>
+    <simpleType href="platform:/resource/UPIService/UPIService/UPIService.xsd#//AccountNumberType;XSDSimpleTypeDefinition" name="AccountNumberType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/UPIService/UPIService.xsd#//MobileNumberType;XSDSimpleTypeDefinition=1" name="MobileNumberType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/UPIService/UPIService.xsd#//RequestTypeType;XSDSimpleTypeDefinition=2" name="RequestTypeType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/UPIService/UPIService.xsd#//AadhaarNumberType;XSDSimpleTypeDefinition=3" name="AadhaarNumberType" variety="atomic"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd" prefix="tns" targetNamespace="http://schemas.xmlsoap.org/soap/envelope/">
+    <import name="IBMdefined/org/w3/www/xml/_1998/namespace/xml.xsd" targetNamespace="http://www.w3.org/XML/1998/namespace"/>
+    <element href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Envelope;XSDElementDeclaration" name="Envelope" type="mlib://UPIService#/-/complexType{http://schemas.xmlsoap.org/soap/envelope/}Envelope"/>
+    <element href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Header;XSDElementDeclaration=1" name="Header" type="mlib://UPIService#/-/complexType{http://schemas.xmlsoap.org/soap/envelope/}Header"/>
+    <element href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Body;XSDElementDeclaration=2" name="Body" type="mlib://UPIService#/-/complexType{http://schemas.xmlsoap.org/soap/envelope/}Body"/>
+    <element href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Fault;XSDElementDeclaration=3" name="Fault" type="mlib://UPIService#/-/complexType{http://schemas.xmlsoap.org/soap/envelope/}Fault"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Envelope;XSDComplexTypeDefinition" name="Envelope"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Header;XSDComplexTypeDefinition=1" name="Header"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Body;XSDComplexTypeDefinition=2" name="Body"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//Fault;XSDComplexTypeDefinition=3" name="Fault"/>
+    <complexType href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//FaultString;XSDComplexTypeDefinition=4" name="FaultString"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//detail;XSDComplexTypeDefinition=5" name="detail"/>
+    <simpleType href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//encodingStyle;XSDSimpleTypeDefinition" name="encodingStyle" variety="list"/>
+    <attribute href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//mustUnderstand;XSDAttributeDeclaration" name="mustUnderstand"/>
+    <attribute href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//actor;XSDAttributeDeclaration=1" name="actor"/>
+    <attribute href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//encodingStyle;XSDAttributeDeclaration=2" name="encodingStyle"/>
+    <attributeGroup href="platform:/resource/UPIService/IBMdefined/org/xmlsoap/schemas/soap/envelope/soapenv11.xsd#//encodingStyle;XSDAttributeGroupDefinition" name="encodingStyle"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/UPIService/IBMdefined/soap.xsd" prefix="" targetNamespace="">
+    <element href="platform:/resource/UPIService/IBMdefined/soap.xsd#//SOAP_Domain_Msg;XSDElementDeclaration" name="SOAP_Domain_Msg" type="mlib://UPIService#/-/complexType{}SOAP_Msg_type"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/IBMdefined/soap.xsd#//MIME_Headers_type;XSDComplexTypeDefinition" name="MIME_Headers_type"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/IBMdefined/soap.xsd#//Attachment_type;XSDComplexTypeDefinition=1" name="Attachment_type"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/IBMdefined/soap.xsd#//SOAP_Msg_type;XSDComplexTypeDefinition=2" name="SOAP_Msg_type"/>
+    <group href="platform:/resource/UPIService/IBMdefined/soap.xsd#//MIME_header_fields;XSDModelGroupDefinition" name="MIME_header_fields"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/UPIService/UPIService_InlineSchema2.xsd" prefix="tns" targetNamespace="http://xmlns.yesbank.com/WS/UPIService">
+    <element href="platform:/resource/UPIService/UPIService_InlineSchema2.xsd#//GetAccountList;XSDElementDeclaration" name="GetAccountList"/>
+    <element href="platform:/resource/UPIService/UPIService_InlineSchema2.xsd#//GetAccountListResponse;XSDElementDeclaration=1" name="GetAccountListResponse"/>
+    <element href="platform:/resource/UPIService/UPIService_InlineSchema2.xsd#//SetORValidateMPIN;XSDElementDeclaration=2" name="SetORValidateMPIN"/>
+    <element href="platform:/resource/UPIService/UPIService_InlineSchema2.xsd#//SetORValidateMPINResponse;XSDElementDeclaration=3" name="SetORValidateMPINResponse"/>
+    <element href="platform:/resource/UPIService/UPIService_InlineSchema2.xsd#//GetHashKey;XSDElementDeclaration=4" name="GetHashKey"/>
+    <element href="platform:/resource/UPIService/UPIService_InlineSchema2.xsd#//GetHashKeyResponse;XSDElementDeclaration=5" name="GetHashKeyResponse"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/UPIService/IBMdefined/org/w3/www/xml/_1998/namespace/xml.xsd" prefix="xml" targetNamespace="http://www.w3.org/XML/1998/namespace">
+    <attribute href="platform:/resource/UPIService/IBMdefined/org/w3/www/xml/_1998/namespace/xml.xsd#//lang;XSDAttributeDeclaration" name="lang"/>
+    <attribute href="platform:/resource/UPIService/IBMdefined/org/w3/www/xml/_1998/namespace/xml.xsd#//space;XSDAttributeDeclaration=1" name="space"/>
+    <attribute href="platform:/resource/UPIService/IBMdefined/org/w3/www/xml/_1998/namespace/xml.xsd#//base;XSDAttributeDeclaration=2" name="base"/>
+    <attributeGroup href="platform:/resource/UPIService/IBMdefined/org/w3/www/xml/_1998/namespace/xml.xsd#//specialAttrs;XSDAttributeGroupDefinition" name="specialAttrs"/>
+  </XSDCollection>
+  <XSDCollection href="platform:/resource/UPIService/CommonSchema/commontypes.xsd" prefix="bm" targetNamespace="http://xmlns.yesbank.com/WS/CommonTypes">
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//ReqHdrType;XSDComplexTypeDefinition" name="ReqHdrType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//ResHdrType;XSDComplexTypeDefinition=1" name="ResHdrType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//ConsumerContextType;XSDComplexTypeDefinition=2" name="ConsumerContextType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//ServiceContextType;XSDComplexTypeDefinition=3" name="ServiceContextType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//ErrorInfoType;XSDComplexTypeDefinition=4" name="ErrorInfoType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//ServiceResponseType;XSDComplexTypeDefinition=5" name="ServiceResponseType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//OTPInfoType;XSDComplexTypeDefinition=6" name="OTPInfoType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//AccountInfoType;XSDComplexTypeDefinition=7" name="AccountInfoType"/>
+    <complexType baseType="mlib://UPIService#/-/complexType{http://www.w3.org/2001/XMLSchema}anyType" href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//PeriodType;XSDComplexTypeDefinition=8" name="PeriodType"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//CardNumberType;XSDSimpleTypeDefinition" name="CardNumberType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//PINType;XSDSimpleTypeDefinition=1" name="PINType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//CustomerIdType;XSDSimpleTypeDefinition=2" name="CustomerIdType" variety="atomic"/>
+    <simpleType baseType="mlib://UPIService#/-/simpleType{http://xmlns.yesbank.com/WS/CommonTypes}CardNumberType" href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//DebitCardNumberType;XSDSimpleTypeDefinition=3" name="DebitCardNumberType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//AmountType;XSDSimpleTypeDefinition=4" name="AmountType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//AccountNumberType;XSDSimpleTypeDefinition=5" name="AccountNumberType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//SecondaryAccountHolderNameType;XSDSimpleTypeDefinition=6" name="SecondaryAccountHolderNameType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//MMIDType;XSDSimpleTypeDefinition=7" name="MMIDType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//IFSCCodeType;XSDSimpleTypeDefinition=8" name="IFSCCodeType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//NomineeNameType;XSDSimpleTypeDefinition=9" name="NomineeNameType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//CASANumber;XSDSimpleTypeDefinition=10" name="CASANumber" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//PercentageType;XSDSimpleTypeDefinition=11" name="PercentageType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//PhoneNumberType;XSDSimpleTypeDefinition=12" name="PhoneNumberType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//ProductNameType;XSDSimpleTypeDefinition=13" name="ProductNameType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//CustomerNameType;XSDSimpleTypeDefinition=14" name="CustomerNameType" variety="atomic"/>
+    <simpleType href="platform:/resource/UPIService/CommonSchema/commontypes.xsd#//CustomerTypeType;XSDSimpleTypeDefinition=15" name="CustomerTypeType" variety="atomic"/>
+  </XSDCollection>
+</MessageBroker>

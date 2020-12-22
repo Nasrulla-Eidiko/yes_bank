@@ -1,0 +1,13 @@
+CREATE FUNCTION SetBlankValue(IN rootNode REFERENCE)
+	
+     BEGIN
+	
+	IF (FIELDTYPE(rootNode) = JSON.Object ) THEN
+		DECLARE tempref REFERENCE TO rootNode;
+		MOVE tempref FIRSTCHILD;
+		IF(NOT(LASTMOVE(tempref)))THEN
+		SET tempref= '';
+        END IF;
+	END IF;
+    
+    END;

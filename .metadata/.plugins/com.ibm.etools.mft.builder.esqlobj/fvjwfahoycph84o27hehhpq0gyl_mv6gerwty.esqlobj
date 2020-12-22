@@ -1,0 +1,82 @@
+CREATE PROCEDURE createJSONArraysXPATH(IN root REFERENCE ,IN env REFERENCE) 
+	BEGIN
+		
+		DECLARE firstArrayElementRef REFERENCE TO root;
+	
+		DECLARE arraySize INTEGER 0;
+		
+		DECLARE  test BOOLEAN false;
+    	
+		DECLARE outRef REFERENCE to env.VariablesXpath.Array[1];
+		WHILE LASTMOVE(outRef)DO
+		
+		call Split(outRef,env,'.');
+		
+		DECLARE Ref REFERENCE to env.Split.Array[1];
+		
+
+		
+		
+DECLARE CHECKSIBLING BOOLEAN FALSE;
+	DECLARE CHECK BOOLEAN FALSE;
+	--
+	-- DEPTH determines when to finish.  
+	-- Every time we MOVE FIRSTCHILD we add 1 to DEPTH
+	-- Every time we MOVE PARENT we subtract 1 from DEPTH
+	-- MOVE NEXTSIBLING does not change DEPTH
+	-- Initial value is 1, so we are finished when DEPTH = 0
+	--
+	DECLARE DEPTH INTEGER 1;
+	--
+	-- Walk the tree top to bottom, left to right
+	--
+	LOOP1:WHILE DEPTH <> 0 DO 
+		IF CHECKSIBLING = FALSE THEN 
+			MOVE firstArrayElementRef FirstChild;
+		 	IF LASTMOVE(firstArrayElementRef) = TRUE  THEN
+				SET DEPTH = DEPTH + 1;
+				SET CHECK =CheckArrayElementXpath(firstArrayElementRef,env);
+				IF( CHECK)THEN
+					CALL createJSONARRAYFROMXPATH(firstArrayElementRef,CHECK,arraySize);
+					SET DEPTH = DEPTH + 1;
+		 		END IF;
+		 	ELSE
+		 		MOVE firstArrayElementRef NEXTSIBLING;
+				IF LASTMOVE(firstArrayElementRef) = TRUE  THEN
+					SET CHECK =CheckArrayElementXpath(firstArrayElementRef,env);
+					IF( CHECK)THEN
+						CALL createJSONARRAYFROMXPATH(firstArrayElementRef,CHECK,arraySize);
+						SET DEPTH = DEPTH + 1;
+			 		END IF;
+					SET CHECKSIBLING = FALSE;
+			 	ELSE
+					SET DEPTH = DEPTH - 1;
+					Move firstArrayElementRef PARENT;		 		
+					SET CHECKSIBLING = TRUE;
+				END IF;
+		 	END IF;	
+		ELSE
+			MOVE firstArrayElementRef NEXTSIBLING;
+		 		IF LASTMOVE(firstArrayElementRef) = TRUE  THEN
+		 			SET CHECK =CheckArrayElementXpath(firstArrayElementRef,env);
+					IF( CHECK)THEN
+						CALL createJSONARRAYFROMXPATH(firstArrayElementRef,CHECK,arraySize);
+						SET DEPTH = DEPTH + 1;
+		 			END IF;
+					SET CHECKSIBLING = FALSE;
+		 		ELSE
+					SET DEPTH = DEPTH - 1;
+					Move firstArrayElementRef PARENT;		 		
+					SET CHECKSIBLING = TRUE;
+				END IF;
+		END IF;
+	END WHILE;
+	
+
+		
+		SET arraySize=0;
+		MOVE firstArrayElementRef TO root;
+		MOVE outRef  NEXTSIBLING; 
+		END WHILE; 
+	
+	END;

@@ -1,0 +1,2 @@
+CREATE FUNCTION getCustomerIDCheck(IN CustIDLenPad CHARACTER)  RETURNS CHARACTER
+ LANGUAGE JAVA   EXTERNAL NAME "com.yesbank.esb.UtilityJava.fillZeros";

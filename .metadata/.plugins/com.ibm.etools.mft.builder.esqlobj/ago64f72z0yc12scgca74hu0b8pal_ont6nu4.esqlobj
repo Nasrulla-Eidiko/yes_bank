@@ -1,0 +1,20 @@
+CREATE PROCEDURE XML2JSONXPATHPROC(IN outRef REFERENCE,IN envRef REFERENCE )BEGIN
+	    SET outRef.XMLNSC.(XMLNSC.Element)*[1].*:schemaLocation = NULL;
+		DECLARE I1 INTEGER CARDINALITY(outRef.XMLNSC.(XMLNSC.Element)*[1].(XMLNSC.NamespaceDecl)*[]);
+		DECLARE I2 INTEGER 1;
+		WHILE I2 <= I1 DO
+			SET outRef.XMLNSC.(XMLNSC.Element)*[1].(XMLNSC.NamespaceDecl)*[1] = NULL;
+			SET I2 = I2 + 1;
+		END WHILE;	
+		
+	
+     	CREATE LASTCHILD OF outRef DOMAIN 'JSON';
+		Set outRef.JSON.Data = outRef.XMLNSC;
+	
+		
+		
+		CALL createJSONArraysXPATH(outRef.JSON.Data,envRef);
+		CALL RemoveNullObjectInJson(outRef.JSON.Data);
+		SET  outRef.XMLNSC =NULL;
+		
+	END;

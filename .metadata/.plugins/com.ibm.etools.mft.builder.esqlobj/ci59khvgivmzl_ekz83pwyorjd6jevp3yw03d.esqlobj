@@ -1,0 +1,18 @@
+CREATE FUNCTION ChangeNamespace(IN rootNode REFERENCE, In oldNamespace CHARACTER, In newNamespace CHARACTER)
+BEGIN
+	--
+	-- Check for elements/attributes with the source namespace		
+	--
+    IF (FIELDTYPE(rootNode) = Name) OR (FIELDTYPE(rootNode) = NameValue) THEN
+		IF FIELDNAMESPACE(rootNode) IS NOT NULL  THEN 
+			--
+			-- Set the new target namespace
+			--
+			--SET rootNode NAMESPACE = newNamespace;
+			--
+			-- Get rid of any inline namespace definitions
+			--
+			SET rootNode.(XMLNSC.NamespaceDecl)* = NULL;
+		END IF;
+    END IF;
+END;

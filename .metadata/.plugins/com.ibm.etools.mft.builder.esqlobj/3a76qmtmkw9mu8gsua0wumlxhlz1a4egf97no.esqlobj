@@ -1,0 +1,28 @@
+CREATE FUNCTION getExceptionDetail(IN InputExceptionList REFERENCE) RETURNS CHAR
+	BEGIN
+	    DECLARE messageText CHAR;
+	    SET messageText = 'Exception:';
+
+	    DECLARE ptrException reference to InputExceptionList.*[1];
+	
+	    WHILE lastmove(ptrException) DO
+			DECLARE insertCount INT CARDINALITY(ptrException.Insert[]); 
+			DECLARE idx INT 1;
+
+			IF ptrException.Text IS NOT NULL THEN
+				SET messageText = messageText || ' | ' || ptrException.Text;
+			END IF;
+   
+			WHILE idx <= insertCount DO
+				IF ptrException.Insert[idx].Type = '5' THEN
+				  SET messageText = messageText || ' | ' || ptrException.Insert[idx].Text;
+				END IF;
+			
+				SET idx = idx + 1;
+			END WHILE;
+      
+			MOVE ptrException lastchild;
+		END WHILE; 
+	        
+	  	RETURN messageText;
+	END;
